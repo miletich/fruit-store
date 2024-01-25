@@ -1,4 +1,5 @@
 import { useEffect } from 'react';
+import ErrorBoundary from './components/ErrorBoundary';
 
 function App() {
   useEffect(() => {
@@ -9,7 +10,7 @@ function App() {
       });
   }, []);
 
-  return <>hello</>;
+  return <ErrorBoundary>hello</ErrorBoundary>;
 }
 
 export default App;
