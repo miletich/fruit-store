@@ -3,5 +3,5 @@
 @tailwind utilities;
 
 body {
-  background-color: theme('colors.fuchsia.950');
+  background-color: theme('colors.purple.950');
 }
