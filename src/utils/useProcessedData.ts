@@ -5,7 +5,7 @@ import { useData } from '../context/DataContext';
 import type { Datum, Tab } from './data';
 
 type DefinedTab = Exclude<Tab, undefined>;
-type DataByCountry = Dictionary<Datum[]>;
+export type DataByCountry = Dictionary<Datum[]>;
 
 // const tabs: DefinedTab[] = ['Hot', 'New', 'Recommended'];
 
@@ -35,5 +35,5 @@ export const useProcessedData = () => {
     ? 'Recommended'
     : 'All';
 
-  return { All: groupedByCountry, Hot, New, Recommended, defaultTab };
+  return { Hot, New, Recommended, All: groupedByCountry, defaultTab };
 };

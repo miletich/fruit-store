@@ -1,12 +1,13 @@
 import H from '../components/H';
 import * as Tabs from '../components/Tabs';
 import { useProcessedData } from '../utils/useProcessedData';
+import TabView from './TabView';
 
 const config = ['Hot', 'New', 'Recommended', 'All'];
 
 export default function FruitList() {
-  const { defaultTab, ...data } = useProcessedData();
-  console.log(data, defaultTab);
+  const { defaultTab, ...groupedData } = useProcessedData();
+  console.log(groupedData, defaultTab);
 
   return (
     <div>
@@ -15,10 +16,7 @@ export default function FruitList() {
       </H>
       <Tabs.Root defaultValue={defaultTab}>
         <Tabs.List config={config} ariaLabel="Choose a fruit category" />
-        <Tabs.Tab value="Hot">Hot</Tabs.Tab>
-        <Tabs.Tab value="New">New</Tabs.Tab>
-        <Tabs.Tab value="Recommended">Recommended</Tabs.Tab>
-        <Tabs.Tab value="All">All</Tabs.Tab>
+        <TabView groupedData={groupedData} />
       </Tabs.Root>
     </div>
   );
