@@ -1,0 +1,17 @@
+[
+  {
+    "id": "us",
+    "name": "America",
+    "emoji": "🇺🇸"
+  },
+  {
+    "id": "uk",
+    "name": "England",
+    "emoji": "🇬🇧️"
+  },
+  {
+    "id": "jp",
+    "name": "Japan",
+    "emoji": "🇯🇵️"
+  }
+]
