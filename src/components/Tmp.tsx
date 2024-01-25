@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import { useCountries } from '../context/CountriesContext';
 import Loader from './Loader';
+import H from './H';
 
 export default function Tmp() {
   const countries = useCountries();
@@ -11,7 +12,7 @@ export default function Tmp() {
   return (
     <div>
       <Loader />
-      tmp
+      <H role="h2">tmp</H>
     </div>
   );
 }
