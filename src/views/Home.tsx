@@ -3,6 +3,7 @@ import Hr from '../components/Hr';
 import Loader from '../components/Loader';
 import { useCountries } from '../context/CountriesContext';
 import { DataContextProvider } from '../context/DataContext';
+import FruitList from './FruitList';
 import MainMenu from './MainMenu';
 
 export default function Home() {
@@ -15,6 +16,7 @@ export default function Home() {
         <DataContextProvider>
           <MainMenu />
           <Hr className="mt-8 mb-12" />
+          <FruitList />
         </DataContextProvider>
       ) : (
         <Loader className="w-32 h-12" />
