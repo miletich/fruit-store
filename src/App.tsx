@@ -1,16 +1,16 @@
-import { useEffect } from 'react';
 import ErrorBoundary from './components/ErrorBoundary';
+import Tmp from './components/Tmp';
+import { CountriesContextProvider } from './context/CountriesContext';
 
 function App() {
-  useEffect(() => {
-    fetch('/api/countries')
-      .then((r) => r.json())
-      .then((d) => {
-        console.log(d);
-      });
-  }, []);
-
-  return <ErrorBoundary>hello</ErrorBoundary>;
+  return (
+    <ErrorBoundary>
+      <CountriesContextProvider>
+        <Tmp />
+        hello
+      </CountriesContextProvider>
+    </ErrorBoundary>
+  );
 }
 
 export default App;
