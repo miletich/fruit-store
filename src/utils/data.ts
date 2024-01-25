@@ -21,6 +21,7 @@ export type Tab = z.infer<typeof tabSchema>;
 
 export const datumSchema = z.object({
   id: z.number(),
+  fruit: z.string(),
   tab: tabSchema,
   country: z.string(),
   icon: z.string(),

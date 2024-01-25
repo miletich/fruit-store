@@ -9,8 +9,11 @@ import {
 import { type Datum, dataSchema } from '../utils/data';
 import { useThrowAsyncError } from '../utils/useThrowAsyncError';
 
-type DataContext = Datum[] | null;
-const DataContext = createContext<DataContext>(null);
+type DataContext = { isLoading: boolean; data: Datum[] | null };
+const DataContext = createContext<DataContext>({
+  isLoading: false,
+  data: null,
+});
 
 type DataApiContext = {
   addDatum: (payload: Datum) => void;
@@ -35,28 +38,44 @@ type RemoveDatum = {
   type: 'remove-datum';
   payload: number;
 };
-type Action = AddData | AddDatum | RemoveDatum;
-type DataReducer = (state: Datum[], action: Action) => Datum[];
+type StartFetching = {
+  type: 'start-fetching';
+};
+type Action = AddData | AddDatum | RemoveDatum | StartFetching;
+type DataReducer = (state: DataContext, action: Action) => DataContext;
 const dataReducer: DataReducer = (state, action) => {
   switch (action.type) {
     case 'add-data':
-      return action.payload;
+      return { data: action.payload, isLoading: false };
     case 'add-datum':
-      return [...state, action.payload];
+      return {
+        data: [...(state.data || []), action.payload],
+        isLoading: false,
+      };
     case 'remove-datum':
-      return state.filter((el) => el.id !== action.payload);
+      return {
+        data: (state.data || []).filter((el) => el.id !== action.payload),
+        isLoading: false,
+      };
+    case 'start-fetching':
+      return { ...state, isLoading: true };
     default:
       return state;
   }
 };
 
 export const DataContextProvider = ({ children }: PropsWithChildren) => {
-  const [data, dispatch] = useReducer(dataReducer, []);
+  const [data, dispatch] = useReducer(dataReducer, {
+    data: null,
+    isLoading: false,
+  });
 
   const throwAsyncError = useThrowAsyncError();
 
   const api = useMemo(() => {
     const fetchData = () => {
+      dispatch({ type: 'start-fetching' });
+
       fetch('/api/data')
         .then((r) => {
           if (!r.ok) {

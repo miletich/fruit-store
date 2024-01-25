@@ -7,8 +7,6 @@ import type { Datum, Tab } from './data';
 type DefinedTab = Exclude<Tab, undefined>;
 export type DataByCountry = Dictionary<Datum[]>;
 
-// const tabs: DefinedTab[] = ['Hot', 'New', 'Recommended'];
-
 type FilterGroupedByCountry = (
   data: DataByCountry,
   tab: DefinedTab
@@ -20,7 +18,7 @@ export const filterGroupedByCountry: FilterGroupedByCountry = (data, tab) =>
   }, {} as DataByCountry);
 
 export const useProcessedData = () => {
-  const data = useData();
+  const { data, isLoading } = useData();
   const groupedByCountry = groupBy(data?.reverse(), 'country');
 
   const Hot = filterGroupedByCountry(groupedByCountry, 'Hot');
@@ -35,5 +33,12 @@ export const useProcessedData = () => {
     ? 'Recommended'
     : 'All';
 
-  return { Hot, New, Recommended, All: groupedByCountry, defaultTab };
+  return {
+    Hot,
+    New,
+    Recommended,
+    All: groupedByCountry,
+    defaultTab,
+    isLoading,
+  };
 };
