@@ -14,9 +14,9 @@ export default function CountryGroup({ id, children }: Props) {
   if (!country) return null;
 
   return (
-    <div className="my-3">
+    <div className="my-3 flex flex-col">
       <H role="h4">{`${country.emoji} ${country.name}`}</H>
-      <Hr className="mt-1 mb-2" />
+      <Hr className="mt-2 mb-4" />
       {children}
     </div>
   );
