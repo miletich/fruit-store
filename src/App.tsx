@@ -1,13 +1,12 @@
-import ErrorBoundary from './components/ErrorBoundary';
-import Tmp from './components/Tmp';
+import ErrorBoundary from './views/ErrorBoundary';
 import { CountriesContextProvider } from './context/CountriesContext';
+import Home from './views/Home';
 
 function App() {
   return (
     <ErrorBoundary>
       <CountriesContextProvider>
-        <Tmp />
-        hello
+        <Home />
       </CountriesContextProvider>
     </ErrorBoundary>
   );
