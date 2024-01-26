@@ -1,5 +1,6 @@
 import Button from '../components/Button';
 import { useDataApi } from '../context/DataContext';
+import DeleteDialog from './DeleteDialog';
 
 export default function MainMenu() {
   const { fetchData } = useDataApi();
@@ -10,7 +11,7 @@ export default function MainMenu() {
         Load
       </Button>
       <Button className="min-w-[76px]">Add</Button>
-      <Button className="min-w-[76px]">Delete</Button>
+      <DeleteDialog />
     </div>
   );
 }
