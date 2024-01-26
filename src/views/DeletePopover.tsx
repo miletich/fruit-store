@@ -32,6 +32,7 @@ export default function DeletePopover({
               </Button>
             </Popover.Close>
           </div>
+          <Popover.Arrow />
         </Popover.Content>
       </Popover.Portal>
     </Popover.Root>
