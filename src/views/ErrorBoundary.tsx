@@ -1,4 +1,5 @@
 import { Component, ErrorInfo, ReactNode } from 'react';
+import H from '../components/H';
 
 type Props = {
   children?: ReactNode;
@@ -24,7 +25,14 @@ class ErrorBoundary extends Component<Props, State> {
 
   public render() {
     if (this.state.hasError) {
-      return <h1>Oops... Something went wrong.</h1>;
+      return (
+        <H
+          role="h1"
+          className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
+        >
+          Oops... Something went wrong.
+        </H>
+      );
     }
 
     return this.props.children;
