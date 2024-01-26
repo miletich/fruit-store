@@ -28,6 +28,7 @@
   },
   {
     "id": 3,
+    "tab": "New",
     "country": "uk",
     "icon": "/images/apple.webp",
     "fruit": "Apple",

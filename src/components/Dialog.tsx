@@ -1,7 +1,7 @@
 import * as Dialog from '@radix-ui/react-dialog';
-import { PropsWithChildren } from 'react';
+import { PropsWithChildren, forwardRef } from 'react';
 import { twMerge } from 'tailwind-merge';
-import H from './H';
+import P from './P';
 
 export const Root = Dialog.Root;
 export const Portal = Dialog.Portal;
@@ -10,12 +10,13 @@ export const Close = Dialog.Close;
 
 type ClassNameProp = { className?: string };
 
-export function Overlay({
-  className,
-  children,
-}: PropsWithChildren<ClassNameProp>) {
+export const Overlay = forwardRef<
+  HTMLDivElement,
+  PropsWithChildren<ClassNameProp>
+>(function Overlay({ className, children }, ref) {
   return (
     <Dialog.Overlay
+      ref={ref}
       className={twMerge(
         'bg-purple-950/90 fixed grid top-0 right-0 bottom-0 left-0 place-items-center overflow-y-auto',
         className
@@ -24,7 +25,7 @@ export function Overlay({
       {children}
     </Dialog.Overlay>
   );
-}
+});
 
 export function Content({
   className,
@@ -48,9 +49,7 @@ export function Title({
 }: PropsWithChildren<ClassNameProp>) {
   return (
     <Dialog.Title className={twMerge('', className)}>
-      <H role="h4" className="mb-5">
-        {children}
-      </H>
+      <P className="mb-5 text-lg font-semibold">{children}</P>
     </Dialog.Title>
   );
 }

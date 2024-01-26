@@ -14,7 +14,6 @@ export const tabSchema = z.union([
   z.literal('Hot'),
   z.literal('New'),
   z.literal('Recommended'),
-  z.undefined(),
 ]);
 
 export type Tab = z.infer<typeof tabSchema>;
