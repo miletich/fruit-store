@@ -34,7 +34,7 @@ export function Content({
   return (
     <Dialog.Content
       className={twMerge(
-        'bg-purple-900 rounded-lg w-[90vw] max-w-[505px] p-9 relative',
+        'bg-purple-900 rounded-lg w-[90vw] max-w-[510px] p-9 relative',
         className
       )}
     >
@@ -49,7 +49,7 @@ export function Title({
 }: PropsWithChildren<ClassNameProp>) {
   return (
     <Dialog.Title className={twMerge('', className)}>
-      <P className="mb-5 text-lg text-white font-semibold">{children}</P>
+      <P className="mb-5 text-3xl text-white font-semibold">{children}</P>
     </Dialog.Title>
   );
 }

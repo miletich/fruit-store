@@ -1,5 +1,7 @@
-import { z } from 'zod';
+import type { HTMLInputTypeAttribute } from 'react';
 import { FieldError, UseFormRegister } from 'react-hook-form';
+import { z } from 'zod';
+
 import { datumSchema } from '../utils/data';
 
 const urlOrFile = z
@@ -18,13 +20,14 @@ export const formSchema = z.intersection(
   urlOrFile
 );
 
-export type ValidFieldNames = keyof z.infer<typeof formSchema>;
+export type FormSchema = z.infer<typeof formSchema>;
 
 export type FormFieldProps = {
-  type: string | number;
+  type: HTMLInputTypeAttribute;
+  label: string;
   placeholder?: string;
-  name: ValidFieldNames;
-  register: UseFormRegister<FormData>;
+  name: keyof FormSchema;
+  register: UseFormRegister<FormSchema>;
   error: FieldError | undefined;
   valueAsNumber?: boolean;
 };

@@ -20,12 +20,15 @@ export type Tab = z.infer<typeof tabSchema>;
 
 export const datumSchema = z.object({
   id: z.number(),
-  fruit: z.string(),
+  fruit: z.string().min(1, 'This field is required!'),
   tab: tabSchema,
-  country: z.string(),
-  icon: z.string(),
-  description: z.string(),
-  price: z.number(),
+  country: z.string().min(1, 'This field is required!'),
+  icon: z.string().min(1, 'This field is required!'),
+  description: z.string().min(1, 'This field is required!'),
+  price: z.coerce
+    .number({ invalid_type_error: 'This field is required!' })
+    .finite()
+    .min(0, 'This field is must be a positive number!'),
 });
 
 export type Datum = z.infer<typeof datumSchema>;
