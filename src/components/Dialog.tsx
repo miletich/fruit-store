@@ -49,7 +49,7 @@ export function Title({
 }: PropsWithChildren<ClassNameProp>) {
   return (
     <Dialog.Title className={twMerge('', className)}>
-      <P className="mb-5 text-lg font-semibold">{children}</P>
+      <P className="mb-5 text-lg text-white font-semibold">{children}</P>
     </Dialog.Title>
   );
 }

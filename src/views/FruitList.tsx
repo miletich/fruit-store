@@ -8,7 +8,6 @@ const config = ['Hot', 'New', 'Recommended', 'All'];
 
 export default function FruitList() {
   const { defaultTab, isLoading, ...groupedData } = useProcessedData();
-  console.log(isLoading);
 
   return (
     <div className="mb-16">
