@@ -10,6 +10,7 @@ import { FieldWrapper } from './FieldWrapper';
 import type { FormSchema, FormFieldProps } from './schema';
 import { ComponentProps, PropsWithChildren, forwardRef } from 'react';
 import { requiredMessage } from '../utils/consts';
+import { useCountries } from '../context/CountriesContext';
 
 type OptionProps = ComponentProps<'div'> & { value: string };
 export const Option = forwardRef<HTMLDivElement, OptionProps>(function Option(
@@ -48,12 +49,17 @@ export function Select({
   placeholder,
   children,
 }: SelectProps) {
+  const countries = useCountries();
   const errorId = `${name}-error`;
+
   return (
     <Controller
       control={control}
-      name={name as 'tab'}
+      name={name as 'tab' | 'country'}
       render={({ field: { ref, ...restField } }) => {
+        const val = restField.value;
+        const country = countries?.find((c) => c.id === val);
+
         return (
           <FieldWrapper
             key={restField.value}
@@ -71,7 +77,10 @@ export function Select({
                 className="flex items-center justify-between bg-purple-800 hover:bg-purple-700 font-semibold p-2 rounded-lg text-sm text-white focus:outline-none focus:ring-0 focus:outline-purple-600 focus:outline-offset-0"
               >
                 <SelectPrimitive.Value placeholder={placeholder}>
-                  {restField.value}
+                  {/* quick hack to display emojis, wouldn't do this in prod */}
+                  {name === 'country'
+                    ? `${country?.emoji} ${country?.name}`
+                    : val}
                 </SelectPrimitive.Value>
                 <SelectPrimitive.Icon>
                   <ChevronDownIcon />

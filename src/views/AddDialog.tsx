@@ -10,6 +10,7 @@ import { TextArea } from '../form/TextArea';
 import { Select, Option } from '../form/Select';
 import { useEffect } from 'react';
 import { ImageUpload } from '../form/ImageUpload';
+import { useDataApi } from '../context/DataContext';
 
 export default function AddDialog() {
   const {
@@ -19,17 +20,18 @@ export default function AddDialog() {
     control,
     reset,
     setFocus,
-    getValues,
   } = useForm<FormSchema>({ resolver: zodResolver(formSchema) });
-  console.log({ errors, vals: getValues() });
+  const { addDatum } = useDataApi();
 
-  const onSubmit = (data: FormSchema) => {
-    console.log(data);
+  const onSubmit = ({ iconFile, iconUrl, ...rest }: FormSchema) => {
+    addDatum({
+      ...rest,
+      id: Date.now(),
+      icon: iconFile?.length ? URL.createObjectURL(iconFile[0]) : iconUrl!,
+    });
+
+    reset();
   };
-
-  useEffect(() => {
-    isSubmitSuccessful && reset();
-  });
 
   useEffect(() => {
     if (errors.tab) {
@@ -65,13 +67,17 @@ export default function AddDialog() {
                 register={register}
                 error={errors.fruit}
               />
-              <Input
+              <Select
                 name="country"
                 label="Country"
-                type="string"
-                register={register}
+                placeholder="Please select a country..."
+                control={control}
                 error={errors.country}
-              />
+              >
+                <Option value="us">🇺🇸 America</Option>
+                <Option value="uk">🇬🇧️ England</Option>
+                <Option value="jp">🇯🇵️ Japan</Option>
+              </Select>
               <ImageUpload
                 name="iconFile"
                 label="Icon"
