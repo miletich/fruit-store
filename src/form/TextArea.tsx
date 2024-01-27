@@ -12,7 +12,12 @@ export function TextArea({
   const errorId = `${name}-error`;
 
   return (
-    <FieldWrapper name={name} label={label} errorId={errorId}>
+    <FieldWrapper
+      name={name}
+      label={label}
+      errorId={errorId}
+      errorMessage={error?.message}
+    >
       <textarea
         id={name}
         placeholder={placeholder}

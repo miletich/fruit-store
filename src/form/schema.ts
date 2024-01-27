@@ -3,18 +3,37 @@ import { FieldError, UseFormRegister } from 'react-hook-form';
 import { z } from 'zod';
 
 import { datumSchema } from '../utils/data';
-import { requiredMessage } from '../utils/consts';
+import { imgMimeTypes, invalidImgMessage } from '../utils/consts';
 
 const urlOrFile = z
   .object({
-    iconUrl: z.string().min(1, requiredMessage),
-    iconFile: z.instanceof(File),
+    iconUrl: z.string().optional(),
+    iconFile: z
+      .instanceof(FileList)
+      .refine(
+        (files) => imgMimeTypes.includes(files?.[0]?.type) || !files.length,
+        {
+          message: invalidImgMessage,
+        }
+      ),
   })
   .partial()
-  .refine(
-    ({ iconUrl, iconFile }) => iconUrl !== undefined || iconFile !== undefined,
-    { message: 'Either a URL or a file must be provided!' }
-  );
+  .superRefine(({ iconUrl, iconFile }, ctx) => {
+    if (!iconUrl && !iconFile?.length) {
+      ctx.addIssue({
+        code: z.ZodIssueCode.custom,
+        path: ['iconUrl'],
+        fatal: true,
+        message: 'Either a URL or a file must be provided!',
+      });
+      ctx.addIssue({
+        code: z.ZodIssueCode.custom,
+        path: ['iconFile'],
+        fatal: true,
+        message: 'Either a URL or a file must be provided!',
+      });
+    }
+  });
 
 export const formSchema = z.intersection(
   datumSchema.omit({ id: true, icon: true }),

@@ -11,7 +11,7 @@ export default forwardRef<HTMLSpanElement, Props>(function ErrorMessage(
     <span
       ref={ref}
       role="alert"
-      className={twMerge('text-red-600 text-sm -mb-6', className)}
+      className={twMerge('text-red-600 text-sm -mb-5', className)}
       {...rest}
     >
       {`* ${children}`}
