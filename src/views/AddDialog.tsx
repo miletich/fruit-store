@@ -9,28 +9,33 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { TextArea } from '../form/TextArea';
 import { Select, Option } from '../form/Select';
 import { useEffect } from 'react';
+import { ImageUpload } from '../form/ImageUpload';
 
 export default function AddDialog() {
   const {
     register,
     handleSubmit,
-    formState: { errors },
+    formState: { errors, isSubmitSuccessful },
     control,
     reset,
     setFocus,
+    getValues,
   } = useForm<FormSchema>({ resolver: zodResolver(formSchema) });
+  console.log({ errors, vals: getValues() });
+
+  const onSubmit = (data: FormSchema) => {
+    console.log(data);
+  };
+
+  useEffect(() => {
+    isSubmitSuccessful && reset();
+  });
 
   useEffect(() => {
     if (errors.tab) {
       setFocus('tab');
     }
   }, [errors, setFocus]);
-
-  const onSubmit = (data: FormSchema) => {
-    console.log(data);
-    reset();
-  };
-  console.log(errors);
 
   return (
     <Dialog.Root>
@@ -66,6 +71,13 @@ export default function AddDialog() {
                 type="string"
                 register={register}
                 error={errors.country}
+              />
+              <ImageUpload
+                name="iconFile"
+                label="Icon"
+                register={register}
+                error={errors.iconFile}
+                shouldResetPreview={isSubmitSuccessful}
               />
               <Input
                 name="iconUrl"
