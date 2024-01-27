@@ -3,10 +3,11 @@ import { FieldError, UseFormRegister } from 'react-hook-form';
 import { z } from 'zod';
 
 import { datumSchema } from '../utils/data';
+import { requiredMessage } from '../utils/consts';
 
 const urlOrFile = z
   .object({
-    iconUrl: z.string().url(),
+    iconUrl: z.string().min(1, requiredMessage),
     iconFile: z.instanceof(File),
   })
   .partial()

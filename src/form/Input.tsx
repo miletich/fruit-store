@@ -14,7 +14,12 @@ export function Input({
 }: FormFieldProps & { className?: string }) {
   const errorId = `${name}-error`;
   return (
-    <FieldWrapper name={name} label={label} errorId={errorId}>
+    <FieldWrapper
+      name={name}
+      label={label}
+      errorId={errorId}
+      errorMessage={error?.message}
+    >
       <input
         id={name}
         type={type}

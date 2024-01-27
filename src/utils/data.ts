@@ -1,4 +1,5 @@
 import z from 'zod';
+import { requiredMessage } from './consts';
 
 export const countrySchema = z.object({
   id: z.string(),
@@ -20,13 +21,13 @@ export type Tab = z.infer<typeof tabSchema>;
 
 export const datumSchema = z.object({
   id: z.number(),
-  fruit: z.string().min(1, 'This field is required!'),
+  fruit: z.string().min(1, requiredMessage),
   tab: tabSchema,
-  country: z.string().min(1, 'This field is required!'),
-  icon: z.string().min(1, 'This field is required!'),
-  description: z.string().min(1, 'This field is required!'),
+  country: z.string().min(1, requiredMessage),
+  icon: z.string().min(1, requiredMessage),
+  description: z.string().min(1, requiredMessage),
   price: z.coerce
-    .number({ invalid_type_error: 'This field is required!' })
+    .number({ invalid_type_error: requiredMessage })
     .finite()
     .min(0, 'This field is must be a positive number!'),
 });
