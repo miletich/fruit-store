@@ -10,7 +10,6 @@ table tr:last-child td:first-child {
   border-bottom-left-radius: 0.5rem;
 }
 
-/* bottom-right border-radius */
 table tr:last-child td:last-child {
   border-bottom-right-radius: 0.5rem;
 }

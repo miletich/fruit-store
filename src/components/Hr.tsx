@@ -12,6 +12,6 @@ export default forwardRef<HTMLHRElement, Props>(function Hr(
       ref={ref}
       className={twMerge('bg-purple-600/70 h-px border-none', className)}
       {...rest}
-    ></hr>
+    />
   );
 });

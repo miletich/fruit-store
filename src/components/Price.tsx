@@ -9,8 +9,8 @@ type Props = {
 
 export default function Price({ price, className }: Props) {
   return (
-    <P
-      className={twMerge('text-green-600 font-semibold text-lg', className)}
-    >{`$${price}`}</P>
+    <P className={twMerge('text-green-600 font-semibold text-lg', className)}>
+      {`$${price}`}
+    </P>
   );
 }

@@ -44,10 +44,12 @@ export default function AddDialog() {
       <Dialog.Trigger asChild>
         <Button className="min-w-[76px]">Add</Button>
       </Dialog.Trigger>
+
       <Dialog.Portal>
         <Dialog.Overlay>
           <Dialog.Content>
             <Dialog.Title>Add Fruit</Dialog.Title>
+
             <Form onSubmit={handleSubmit(onSubmit)}>
               <Select
                 name="tab"
@@ -108,6 +110,7 @@ export default function AddDialog() {
                 register={register}
                 error={errors.description}
               />
+
               <div className="mt-6 text-end">
                 <Dialog.Close asChild>
                   <Button

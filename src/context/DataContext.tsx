@@ -42,6 +42,7 @@ type StartFetching = {
   type: 'start-fetching';
 };
 type Action = AddData | AddDatum | RemoveDatum | StartFetching;
+
 type DataReducer = (state: DataContext, action: Action) => DataContext;
 const dataReducer: DataReducer = (state, action) => {
   switch (action.type) {

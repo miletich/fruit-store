@@ -39,9 +39,7 @@ export function ImageUpload({
   const handleUploadedFile: ChangeEventHandler<HTMLInputElement> = (e) => {
     registerOnChange(e);
     const file = e.target.files![0];
-
     const urlImage = URL.createObjectURL(file);
-
     setPreview(urlImage);
   };
 

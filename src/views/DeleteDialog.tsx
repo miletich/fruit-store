@@ -24,18 +24,19 @@ export default function DeleteDialog() {
             <Dialog.Close asChild>
               <CloseButton />
             </Dialog.Close>
-            <Table.Root className="w-full">
-              <Table.Thead>
-                <Table.Tr className="odd:bg-purple-750 hover:bg-purple-750 text-white/60">
-                  <Table.Th className="rounded-tl-lg">Tab</Table.Th>
-                  <Table.Th>Country</Table.Th>
-                  <Table.Th>Fruit</Table.Th>
-                  <Table.Th className="rounded-tr-lg">Action</Table.Th>
-                </Table.Tr>
-              </Table.Thead>
-              <Table.Tbody>
-                {data &&
-                  data.map(({ tab, country, fruit, id }) => (
+
+            {data && (
+              <Table.Root className="w-full">
+                <Table.Thead>
+                  <Table.Tr className="odd:bg-purple-750 hover:bg-purple-750 text-white/60">
+                    <Table.Th className="rounded-tl-lg">Tab</Table.Th>
+                    <Table.Th>Country</Table.Th>
+                    <Table.Th>Fruit</Table.Th>
+                    <Table.Th className="rounded-tr-lg">Action</Table.Th>
+                  </Table.Tr>
+                </Table.Thead>
+                <Table.Tbody>
+                  {data.map(({ tab, country, fruit, id }) => (
                     <Table.Tr key={id}>
                       <Table.Td>{tab}</Table.Td>
                       <Table.Td>
@@ -55,8 +56,9 @@ export default function DeleteDialog() {
                       </Table.Td>
                     </Table.Tr>
                   ))}
-              </Table.Tbody>
-            </Table.Root>
+                </Table.Tbody>
+              </Table.Root>
+            )}
           </Dialog.Content>
         </Dialog.Overlay>
       </Dialog.Portal>

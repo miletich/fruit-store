@@ -13,6 +13,7 @@ export default function DeletePopover({
   return (
     <Popover.Root>
       <Popover.Trigger asChild>{children}</Popover.Trigger>
+
       <Popover.Portal>
         <Popover.Content>
           <P>⚠️ Are you sure you want to delete this Fruit?</P>
