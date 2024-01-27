@@ -34,7 +34,7 @@ export function Content({
   return (
     <Dialog.Content
       className={twMerge(
-        'bg-purple-900 rounded-lg w-[90vw] max-w-[510px] p-9 relative',
+        'bg-purple-800 rounded-lg w-[90vw] max-w-[510px] p-9 relative',
         className
       )}
     >

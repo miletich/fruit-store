@@ -18,7 +18,11 @@ export default function DeletePopover({
           <P>⚠️ Are you sure you want to delete this Fruit?</P>
           <div className="mt-2 text-end">
             <Popover.Close asChild>
-              <Button size="sm" variant="secondary" className="w-[68px]">
+              <Button
+                size="sm"
+                variant="secondary"
+                className="w-[68px] bg-purple-700"
+              >
                 Cancel
               </Button>
             </Popover.Close>
@@ -32,7 +36,7 @@ export default function DeletePopover({
               </Button>
             </Popover.Close>
           </div>
-          <Popover.Arrow />
+          <Popover.Arrow className="fill-purple-900" />
         </Popover.Content>
       </Popover.Portal>
     </Popover.Root>

@@ -19,7 +19,7 @@ export const Option = forwardRef<HTMLDivElement, OptionProps>(function Option(
 ) {
   return (
     <SelectPrimitive.Item
-      className="flex items-center justify-between bg-purple-800 hover:bg-purple-700 focus:bg-purple-700 font-semibold p-2 
+      className="flex items-center justify-between bg-purple-700 hover:bg-purple-800 focus:bg-purple-900 font-semibold p-2 
       first-of-type:rounded-t-lg last-of-type:rounded-b-lg text-sm text-white focus:outline-none focus:ring-0"
       value={value}
       {...rest}
@@ -74,7 +74,7 @@ export function Select({
             >
               <SelectPrimitive.Trigger
                 ref={ref}
-                className="flex items-center justify-between bg-purple-800 hover:bg-purple-700 font-semibold p-2 rounded-lg text-sm text-white focus:outline-none focus:ring-0 focus:outline-purple-600 focus:outline-offset-0"
+                className="flex items-center justify-between bg-purple-700 hover:bg-purple-700/50 font-semibold p-2 rounded-lg text-sm text-white focus:outline-none focus:ring-0 focus:outline-purple-600 focus:outline-offset-0"
               >
                 <SelectPrimitive.Value placeholder={placeholder}>
                   {/* quick hack to display emojis, wouldn't do this in prod */}

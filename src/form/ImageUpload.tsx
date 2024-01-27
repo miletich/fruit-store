@@ -68,7 +68,7 @@ export function ImageUpload({
           type="button"
           size="sm"
           onClick={onUpload}
-          className="w-[120px] bg-purple-800 font-semibold mb-3"
+          className="w-[120px] font-semibold mb-3"
         >
           {uploadButtonLabel}
         </Button>
@@ -88,7 +88,7 @@ export function ImageUpload({
           {...rest}
         />
       </div>
-      <div className="flex flex-col justify-center items-center w-full h-36 rounded-lg text-purple-300  bg-purple-950">
+      <div className="flex flex-col justify-center items-center w-full h-36 rounded-lg text-white/60  bg-purple-900">
         {preview ? (
           <Img
             src={preview}

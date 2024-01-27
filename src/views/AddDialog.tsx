@@ -113,7 +113,7 @@ export default function AddDialog() {
                   <Button
                     type="button"
                     variant="secondary"
-                    className="w-[120px] bg-purple-800"
+                    className="w-[120px]"
                     onClick={() => reset()}
                   >
                     Close

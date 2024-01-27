@@ -24,7 +24,7 @@ export function TextArea({
         aria-invalid={!!error}
         aria-describedby={errorId}
         rows={3}
-        className="bg-purple-800 p-2 rounded-lg text-sm text-white focus:outline-none focus:ring-0 focus:outline-purple-600 focus:outline-offset-0"
+        className="bg-purple-700 p-2 rounded-lg text-sm text-white focus:outline-none focus:ring-0 focus:outline-purple-600 focus:outline-offset-0"
         {...register(name, { valueAsNumber })}
       />
     </FieldWrapper>

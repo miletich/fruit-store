@@ -42,7 +42,7 @@ export const Tr = forwardRef<HTMLTableRowElement, ComponentProps<'tr'>>(
     return (
       <tr
         ref={ref}
-        className={twMerge('odd:bg-purple-700 bg-purple-600', className)}
+        className={twMerge('odd:bg-purple-700 bg-purple-650', className)}
         {...rest}
       >
         {children}

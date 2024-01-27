@@ -27,7 +27,7 @@ export function Input({
         aria-invalid={!!error}
         aria-describedby={errorId}
         className={twMerge(
-          'bg-purple-800 p-2 rounded-lg text-sm text-white focus:outline-none focus:ring-0 focus:outline-purple-600 focus:outline-offset-0',
+          'bg-purple-700 p-2 rounded-lg text-sm text-white focus:outline-none focus:ring-0 focus:outline-purple-600 focus:outline-offset-0',
           className
         )}
         {...register(name, { valueAsNumber })}

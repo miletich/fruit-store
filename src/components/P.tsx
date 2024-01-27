@@ -8,7 +8,7 @@ export default forwardRef<HTMLParagraphElement, Props>(function P(
   ref
 ) {
   return (
-    <p ref={ref} className={twMerge('text-purple-300', className)} {...rest}>
+    <p ref={ref} className={twMerge('text-white/60', className)} {...rest}>
       {children}
     </p>
   );

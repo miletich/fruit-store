@@ -16,7 +16,7 @@ export const Content = forwardRef<HTMLDivElement, Props>(function Content(
   return (
     <Popover.Content
       ref={ref}
-      className={twMerge('bg-purple-950 p-3 rounded-lg', className)}
+      className={twMerge('bg-purple-900 p-3 rounded-lg', className)}
       side="top"
     >
       {children}

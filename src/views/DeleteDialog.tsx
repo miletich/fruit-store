@@ -26,7 +26,7 @@ export default function DeleteDialog() {
             </Dialog.Close>
             <Table.Root className="w-full">
               <Table.Thead>
-                <Table.Tr className="odd:bg-purple-800 hover:bg-purple-800 text-purple-300">
+                <Table.Tr className="odd:bg-purple-750 hover:bg-purple-750 text-white/60">
                   <Table.Th className="rounded-tl-lg">Tab</Table.Th>
                   <Table.Th>Country</Table.Th>
                   <Table.Th>Fruit</Table.Th>

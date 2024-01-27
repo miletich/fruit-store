@@ -12,7 +12,7 @@ export default forwardRef<HTMLButtonElement, Props>(function CloseButton(
       ref={ref}
       aria-label="close"
       className={twMerge(
-        'p-0.5 rounded-full hover:bg-purple-600 active:bg-purple-400 inline-flex justify-center items-center w-6 h-6 absolute top-4 right-4',
+        'p-0.5 rounded-full hover:bg-purple-650 active:bg-purple-400 inline-flex justify-center items-center w-6 h-6 absolute top-4 right-4',
         className
       )}
       {...rest}
