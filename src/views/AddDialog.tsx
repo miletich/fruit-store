@@ -7,6 +7,8 @@ import { type FormSchema, formSchema } from '../form/schema';
 import { Input } from '../form/Input';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { TextArea } from '../form/TextArea';
+import { Select, Option } from '../form/Select';
+import { useEffect } from 'react';
 
 export default function AddDialog() {
   const {
@@ -15,12 +17,20 @@ export default function AddDialog() {
     formState: { errors },
     control,
     reset,
+    setFocus,
   } = useForm<FormSchema>({ resolver: zodResolver(formSchema) });
+
+  useEffect(() => {
+    if (errors.tab) {
+      setFocus('tab');
+    }
+  }, [errors, setFocus]);
 
   const onSubmit = (data: FormSchema) => {
     console.log(data);
     reset();
   };
+  console.log(errors);
 
   return (
     <Dialog.Root>
@@ -32,6 +42,17 @@ export default function AddDialog() {
           <Dialog.Content>
             <Dialog.Title>Add Fruit</Dialog.Title>
             <Form onSubmit={handleSubmit(onSubmit)}>
+              <Select
+                name="tab"
+                label="Tab"
+                placeholder="Please select a tab..."
+                control={control}
+                error={errors.tab}
+              >
+                <Option value="Hot">Hot</Option>
+                <Option value="New">New</Option>
+                <Option value="Recommended">Recommended</Option>
+              </Select>
               <Input
                 name="fruit"
                 label="Fruit"
